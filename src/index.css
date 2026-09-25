@@ -372,6 +372,15 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 
 .hero__text { flex: 1; min-width: 0; }
 
+.hero__content--centered {
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero__content--centered .hero__actions { justify-content: center; }
+
 .hero__eyebrow {
   font-family: var(--font-pixel);
   font-size: 0.48rem;
