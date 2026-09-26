@@ -1,6 +1,9 @@
 import './index.css'
 
-const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.cachorrocaramelo.clicker&hl=pt_BR'
+const GAMES = [
+  { name: 'Clicker', url: 'https://play.google.com/store/apps/details?id=com.cachorrocaramelo.clicker&hl=pt_BR' },
+  { name: 'Runner', url: 'https://play.google.com/store/apps/details?id=com.carameloclicker.app&hl=pt_BR' },
+]
 
 /* ── Pixel sparkle stars ─────────────────────────────────── */
 
@@ -56,14 +59,14 @@ function PlayIcon() {
   )
 }
 
-function PlayStoreBtn() {
+function PlayStoreBtn({ url, name }: { url: string; name: string }) {
   return (
     <a
-      href={PLAY_URL}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="btn-store btn-store--lg"
-      aria-label="Baixar Cachorro Caramelo Clicker gratuitamente no Google Play"
+      aria-label={`Baixar Cachorro Caramelo ${name} gratuitamente no Google Play`}
     >
       <PlayIcon />
       <span>
@@ -86,12 +89,16 @@ function Hero() {
         <div className="hero__text">
           <h1 className="hero__title">
             Cachorro<br />
-            <span className="hero__title-accent">Caramelo</span><br />
-            Clicker
+            <span className="hero__title-accent">Caramelo</span>
           </h1>
 
-          <div className="hero__actions">
-            <PlayStoreBtn />
+          <div className="games-list">
+            {GAMES.map(game => (
+              <div key={game.name} className="games-list__item">
+                <h2 className="games-list__title">{game.name}</h2>
+                <PlayStoreBtn url={game.url} name={game.name} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
